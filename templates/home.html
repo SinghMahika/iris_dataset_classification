@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App Name - Homepage</title>
+    <title>The Classifier - Homepage</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,11 +13,11 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f4;
+            background-color: #d3cece;
         }
         .container {
             text-align: center;
-            background-color: white;
+            background-color: rgb(202, 154, 210);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -35,29 +35,42 @@
             padding: 10px 20px;
             font-size: 1em;
             color: white;
-            background-color: #007BFF;
+            background-color: #ce5ebe;
             border: none;
             border-radius: 5px;
             text-decoration: none;
             cursor: pointer;
         }
         .btn:hover {
-            background-color: #0056b3;
+            background-color: #ba64d0;
+        }
+        .output {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>App Name</h1>
+    <div class="login">
+        <h1>The Classifier</h1>
         <p>Welcome to Classifier App, your go-to solution for classifing flowers.</p>
-        <h2>Features</h2>
-        <ul>
-            <li>Sepal Length: [Length of Sepal]</li>
-            <li>Sepal Width: [Width of Sepal]</li>
-            <li>Petal Length: [Length of Petal]</li>
-            <li>Petal Width: [Width of Petal]</li>
-        </ul>
-        <a href="#" class="btn">Get Started</a>
+        <h2>Your Input Features would be the following:</h2>
+        <form action ="{{url_for('predict')}}", method = 'POST'>
+        <input type = text name = 'sepal length (cm)' placeholder ='sepal length (cm)' required = "required"/><br>
+        <input type = text name = 'sepal width (cm)' placeholder ='sepal width (cm)' required = "required"/><br>
+        <input type = text name = 'petal length (cm)' placeholder ='petal length (cm)' required = "required"/><br>
+        <input type = text name = 'petal width (cm)' placeholder ='petal width (cm)' required = "required"/><br>
+        <br>
+        <button type = "submit" class = 'btn btn-primary btn-block btn-large'>Predict</button>
+    </form>
+    <div class="output">
+        {{ prediction_text }}
     </div>
+    <br>
+    <br>
+
+    </div>
+
 </body>
 </html>
